@@ -37,8 +37,8 @@ public class BinaryTree implements TreeContract {
 
     private Node deleteRecursive(int value, Node current){
         if(current == null) {return null;}
-        if(value < current.value) {deleteRecursive(value, current.left);}
-        else if(value > current.value) {deleteRecursive(value, current.right);}
+        if(value < current.value) {current.left = deleteRecursive(value, current.left);}
+        else if(value > current.value) {current.right = deleteRecursive(value, current.right);}
 
         else {
             if(current.left == null && current.right == null) {return null;}
