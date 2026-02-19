@@ -18,7 +18,7 @@ public class Main {
 
         System.out.println("Root: " + bt.getRoot().getValue());
 
-        System.out.println("O nó 70 existe? " + bt.search(70));
+        System.out.println("\nO nó 70 existe? " + bt.search(70));
         System.out.println("O nó 40 existe? " + bt.search(40));
 
         System.out.print("\nCaminho IN ORDER: ");

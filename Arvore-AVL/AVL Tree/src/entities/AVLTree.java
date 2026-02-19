@@ -200,6 +200,5 @@ public class AVLTree implements AVLTreeContract {
             recursivePostOrder(current.right);
             System.out.print(current.value + " ");
         }
-
     }
 }
