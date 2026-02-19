@@ -2,8 +2,13 @@
 .idea/
 *.iml
 
+# VS Code
+.vscode/
+
 # Compilados
 out/
+bin/
+target/
 *.class
 
 # Sistema
