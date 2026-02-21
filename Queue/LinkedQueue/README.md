@@ -1,18 +1,14 @@
-## Getting Started
+# LinkedQueue (Java)
+Simple implementation of the Queue data structure using linked nodes in Java.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Operations
+- `enqueue()` – adds an element to the end of the queue
+- `dequeue()` – removes and returns the first element
+- `peek()` – returns the first element without removing it
+- `isEmpty()` – checks if the queue is empty
+- `size()` – returns the number of elements
 
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Concept
+Follows the FIFO principle (First In, First Out).
+Implemented using a singly linked structure with head and tail references.
+All main operations run in O(1) time.
