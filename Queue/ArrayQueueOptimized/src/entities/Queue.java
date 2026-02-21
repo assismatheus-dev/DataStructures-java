@@ -1,6 +1,7 @@
 package entities;
+import interfaces.QueueContract;
 
-public class Queue {
+public class Queue implements QueueContract{
     
     private int[] elements;
     private int front;
@@ -11,12 +12,44 @@ public class Queue {
         this.last = -1;
         this.front = 0;
     }
+
+    @Override
+    public void enqueue(int value) {
+        if (isFull()) {
+            resize();
+        }
+        
+        elements[++last] = value;
+    }
+
+    @Override
+    public int dequeue() {
+        if (isEmpty()) {
+            throw new RuntimeException("Empty queue!");
+        }
+        return elements[front++];
+    }
     
+    @Override
     public boolean isEmpty() {
         return size() == 0;
     }
+
+    @Override
+    public int peek() {
+        if (isEmpty()) {
+            throw new RuntimeException("Empty queue!");
+        }
+        
+        return elements[front];
+    }
     
-    private boolean isFull() {
+    @Override
+    public int size() {
+        return last - front + 1;
+    }
+    
+    public boolean isFull() {
         return last == elements.length - 1;
     }
     
@@ -33,34 +66,8 @@ public class Queue {
         front = 0;
         elements = newVet;
     }
-    
-    public void enqueue(int value) {
-        if (isFull()) {
-            resize();
-        }
-        
-        elements[++last] = value;
-    }
-    
-    public int dequeue() {
-        if (isEmpty()) {
-            throw new RuntimeException("Empty queue!");
-        }
-        return elements[front++];
-    }
-    
-    public int peek() {
-        if (isEmpty()) {
-            throw new RuntimeException("Empty queue!");
-        }
-        
-        return elements[front];
-    }
-    
-    public int size() {
-        return last - front + 1;
-    }
-    
+
+    @Override
     public void print() {
         if (isEmpty()) {
             System.out.print("[]");

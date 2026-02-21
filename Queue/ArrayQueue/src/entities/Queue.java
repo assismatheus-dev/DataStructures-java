@@ -10,26 +10,8 @@ public class Queue implements QueueContract{
         this.elements = new int[10];
         this.last = -1;
     }
-    
-    public boolean isEmpty() {
-        return last == -1;
-    }
-    
-    private boolean isFull() {
-        return last == elements.length - 1;
-    }
-    
-    private void resize() {
-        int newSize = elements.length * 2;
-        int[] newVet = new int[newSize];
-        
-        for(int i = 0; i <= last; i++) {
-            newVet[i] = elements[i];
-        }
-        
-        elements = newVet;
-    }
-    
+
+    @Override
     public void enqueue(int value) {
         if (isFull()) {
             resize();
@@ -38,6 +20,7 @@ public class Queue implements QueueContract{
         elements[++last] = value;
     }
     
+    @Override
     public int dequeue() {
         if (isEmpty()) {
             throw new RuntimeException("Empty queue!");
@@ -51,6 +34,12 @@ public class Queue implements QueueContract{
             return removed;
     }
     
+    @Override
+    public boolean isEmpty() {
+        return last == -1;
+    }
+
+    @Override
     public int peek() {
         if (isEmpty()) {
             throw new RuntimeException("Empty queue!");
@@ -59,10 +48,27 @@ public class Queue implements QueueContract{
         return elements[0];
     }
     
+    @Override
     public int size() {
         return last + 1;
     }
     
+    public boolean isFull() {
+        return last == elements.length - 1;
+    }
+
+    private void resize() {
+        int newSize = elements.length * 2;
+        int[] newVet = new int[newSize];
+        
+        for(int i = 0; i <= last; i++) {
+            newVet[i] = elements[i];
+        }
+        
+        elements = newVet;
+    }
+    
+    @Override
     public void print() {
         if (isEmpty()) {
             System.out.print("[]");

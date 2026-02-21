@@ -13,6 +13,7 @@ public class LinkedQueue implements QueueContract {
         this.size = 0;
     }
     
+    @Override
     public void enqueue(int value) {
         Node newNode = new Node(value);
         
@@ -26,6 +27,7 @@ public class LinkedQueue implements QueueContract {
         size++;
     }
     
+    @Override
     public int dequeue() {
         if (isEmpty()) {
             throw new RuntimeException("Queue empty!");
@@ -41,11 +43,13 @@ public class LinkedQueue implements QueueContract {
         size--;
         return removed;
     }
-    
+ 
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
-    
+
+    @Override
     public int peek() {
         if(isEmpty()) {
             throw new RuntimeException("Queue empty!");
@@ -54,6 +58,7 @@ public class LinkedQueue implements QueueContract {
         return head.value;
     }
     
+    @Override
     public int size() {
         return size;
     }

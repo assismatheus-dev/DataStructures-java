@@ -10,8 +10,45 @@ public class Stack implements StackContract{
         this.top = -1;
     }
 
+    @Override
+     public void push(int value) {
+        if (isFull()) {
+            resize();
+        }
+
+        elements[++top] = value;
+    }
+
+    @Override
+    public int pop() {
+        if (isEmpty()) {
+            throw new RuntimeException("The stack is empty");
+        }
+        // Elemento excluído logicamente, mas ainda existe fisicamente dentro do array elements até ser sobrescrito
+        return elements[top--];
+    }
+
+    @Override
+    public int peek() {
+        if (isEmpty()) { 
+            throw new RuntimeException("The stack is empty");
+        }
+
+        return elements[top];
+    }
+
+    @Override
     public boolean isEmpty() {
         return top == -1;
+    }
+
+    public boolean isFull() {
+        return top == elements.length - 1;
+    }
+
+    @Override
+        public int size() {
+        return top + 1;
     }
 
     private void resize() {
@@ -25,29 +62,7 @@ public class Stack implements StackContract{
         elements = newVet;
     }
 
-    public void push(int value) {
-        if (top == elements.length - 1) {
-            resize();
-        }
-
-        elements[++top] = value;
-    }
-
-    public int pop() {
-        if (isEmpty()) {
-            throw new RuntimeException("The stack is empty");
-        }
-        // Elemento excluído logicamente, mas ainda existe fisicamente dentro do array elements até ser sobrescrito
-        return elements[top--];
-    }
-
-    public int peek() {
-        if (isEmpty()) {
-            throw new RuntimeException("The stack is empty");
-        }
-        return elements[top];
-    }
-
+    @Override
     public void print() {
         if (isEmpty()) {
             System.out.print("[]");
@@ -59,9 +74,5 @@ public class Stack implements StackContract{
             }
         }
         System.out.print("]");
-    }
-
-    public int size() {
-        return top + 1;
     }
  }
